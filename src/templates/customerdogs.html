@@ -1,0 +1,16 @@
+{# templates/customerdogs.html #}
+{% extends "base.html" %}
+
+{% block Title %}Customers{% endblock %}
+
+{% block Content %}
+    <h1>{{ customer }}  </h1>
+    <h3>Dog(s): </h3>
+  <ul>
+  {% for dog in dogs %}
+    <li>
+      {{ dog.name }}, {{dog.breed}}, {{dog.age}}
+    </li>
+  {% endfor %}
+  </ul>
+{% endblock %}

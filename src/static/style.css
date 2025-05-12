@@ -1,0 +1,298 @@
+/*Mobile View*/
+*{
+    /*font-family: 'Amatic SC', cursive, sans-serif;*/   /*MRP: Having this font everywhere makes site a bit hard to read.*/
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-content: space-around;
+    border-style:solid;
+    position: relative;
+}
+
+header h1{
+    font-family: 'Amatic SC', cursive, sans-serif;
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+    text-align: center;
+    order: 1;
+    flex: 0.1 0 auto;
+    font-size: 5.5em;
+    color: white;
+    text-shadow: -1px 1px 0 #000,
+                1px 1px 0 #000,
+                1px -1px 0 #000,
+                -1px -1px 0 #000;
+}
+
+
+.heroImage{
+    background-image:url(dogsWalkingHero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid black;
+    height: 20vh;
+    order:2;
+
+}
+
+.homeImage {
+    
+    width: 80%;
+  }
+
+.howToScheduleImage{
+    background-image:url(HowDoesSchedulingWork.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100%;
+}
+
+body{
+    background-color:whitesmoke;    
+    cursor: url(paw_32.png), pointer;
+}
+
+main {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+footer{
+    border-bottom-style:solid;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding-left: 2em;
+    font-size: small;
+    font-style: italic;
+}
+
+h1 {
+    padding: 0px 10px 0px 10px;
+}
+
+img {
+    width: 19%;
+    height: auto;
+}
+
+#wrapper{
+    background-color: white;
+    margin-left:auto; margin-right:auto;
+    width:95%;
+    padding: 0;
+    
+}
+
+.nav-link{
+    cursor: url(paw_32.png), pointer; 
+}
+
+#mainContent{
+    padding: 0;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: gray;
+}
+
+.row {
+    display: flex;
+    text-align: center;
+}
+
+.smallColumn {
+    flex: 25%;
+}
+
+.column {
+    flex: 50%;
+}
+
+.bigColumn {
+    flex: 75%;
+}
+
+nav ul{
+    font-family: 'Amatic SC', cursive, sans-serif;
+    list-style: none;
+    margin: 0;
+    font-size: 2.2em;
+    padding-left: 0;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+.dropdownCustom{
+    font-family: 'Amatic SC', cursive, sans-serif;
+    list-style: none;
+    margin: 0;
+    font-size: 0.8em; 
+    padding-left: 0;
+    background-color: #333;
+    color: white;
+    text-align: center; 
+}
+
+.navCustom{
+    font-family: 'Amatic SC', cursive, sans-serif;
+    list-style: none;
+    margin: 0;
+    font-size: 2.2em;
+    padding-left: 0;
+    background-color: #333;
+    color: white;
+    text-align: center; 
+}
+
+.footerCustom{
+    background-color: #333;
+    color: white;
+    text-align: center; 
+    border-radius: 0;
+    height: 3.2em;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(245, 222, 179, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+
+.navbar-toggler{
+    border-color: rgba(255,0,0,0);   
+}
+
+.navbar-toggler:focus {
+    border-color: rgba(255,0,0,0);   
+    box-shadow: none;
+}
+
+.navbar-toggler:visited {
+    border-color: rgba(255,0,0,0);   
+}
+
+
+.navbar-toggler-icon:hover {
+    color: white;
+} 
+
+.nav-link{
+    color: wheat; 
+}
+
+.nav-link:hover {
+    color: white;
+} 
+
+nav li{border-bottom: solid black;
+    color: white;
+}
+
+nav a{text-decoration: none;
+color: white;}
+
+nav a:hover{color: #08fccc;}
+
+#register{float: right;
+margin-right: 20px;}
+
+/* Style inputs */
+input[type=datetime-local], input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Style the submit button */
+  input[type=submit] {
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .submit {
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Add a background color to the submit button on mouse-over */
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  div.formContainer {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+  
+
+@media (min-width: 600px) {
+    #wrapper{
+        width: 90%;
+        padding: 2em;
+    }
+    #mainContent{
+        padding: 2em;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+    }
+
+    nav{padding: 2em;}
+
+    nav ul{font-size: 3.2em;
+            flex-wrap: nowrap;
+           flex-direction: row;
+           justify-content: space-around;
+           display: flex;
+    }
+    nav li{border-bottom: none;
+    /* line-height: 100px; */}
+
+    header h1{text-align: right;}
+    
+}
+
+@media (min-width: 1024px) {
+    #wrapper{
+        width: 80%;
+        padding: 2em;
+    }
+
+    
+    #map {
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+    }
+}

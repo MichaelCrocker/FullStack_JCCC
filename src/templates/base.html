@@ -1,0 +1,77 @@
+{# templates/basel.html #}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Paws In Motion</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paws in Motion is a site to help connect busy dog owners with dog walkers.">
+  <meta name="keywords" content="dogs, dog walking, dog walkers, dog walk">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='/favicon.ico') }} ">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
+  <meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"> <!--CAN BE REMOVED AFTER DEV. This just prevents 
+    browser from caching static files, so changes can be quickly reflected.-->
+</head>
+
+<body>
+  <div id="wrapper">
+    <header class="heroImage">
+      <h1>Paws In Motion</h1>
+    </header>
+
+    <!-- <nav>
+      <ul>
+        <li><a class="nav-link" href="/">Home</a></li>
+        <li><a class="nav-link" href="/find-a-walker">Find A Dog Walker</a></li>
+        <li><a class="nav-link" href="/newDog">Register New Dog</a></li>
+        <li><a class="nav-link"id="navLogin" href="/newCustomerAccount">Create An Account</a></li>
+      </ul>
+    </nav> -->
+    <nav class="navbar navbar-expand-lg navCustom">
+      <div class="container-fluid">
+          <button class="navbar-toggler navbar-dark custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+          <div class=" navbar-nav">
+            <a class="nav-link px-4" href="/">Home</a>
+            <a class="nav-link px-4" href="/find-a-walker">Find A Dog Walker</a>
+            <a class="nav-link px-4" href="/newDog">Register New Dog</a>
+
+            <div class="dropdown dropdown-menu-dark ">
+              <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Account
+              </a>            
+              <ul class="dropdown-menu dropdownCustom" aria-labelledby="dropdownMenuLink">
+                <li><a class="nav-link" href="/newCustomerAccount">signup</a></li>
+                <li><a class="nav-link" href="/contractorLogin">signin</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="mainContent">
+      {% block Content %}{% endblock %}
+    </div>
+
+    <footer class = "footerCustom">
+      Paws in Motion © 2024
+    </footer> 
+  </div>
+  
+</body>
+
+</html>

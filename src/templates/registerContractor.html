@@ -1,0 +1,175 @@
+{# templates/registerContractor.html #}
+{% extends "base.html" %}
+
+{% block Content %}
+    <!-- <form id="dataInputForm">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName">      
+        <label for="phone">Phone No.:</label>
+        <input type="text" id="phone" name="phone">
+        <label for="text5">Address:</label>
+        <input type="text" id="address" name="address">
+        <button type="submit">Submit</button>
+    </form> -->
+
+<!-- Modal -->
+<div class = "container">
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <P>Your account has been succesfully created.</P>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-9 col-md-12 col-lg-7 col-xl-6 col-xxl-5">
+            <div class="card border-0 shadow-sm rounded-3">
+              <div class="card-body p-3 p-md-4 p-xl-5">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-5">
+                      <h2 class="h3">Register As a Contractor</h2>
+                      <h3 class="fs-6 fw-normal text-secondary m-0">Enter your details</h3>
+                      <h3 class="fs-6 fw-normal text-secondary m-0">Looking to get your dog walked instead? <a href="/newCustomerAccount">Sign up as Customer</a></h3>
+                    </div>
+                  </div>
+                </div>
+                <form id = "dataInputForm" >
+                  <div class="row gy-3 overflow-hidden">
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" required>
+                        <label for="first_name" class="form-label">First Name</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="First Name" required>
+                        <label for="last_name" class="form-label">Last Name</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" required>
+                        <label for="phone" class="form-label">Phone Number</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="street_address_1" id="street_address_1" placeholder="Street Address 1" required>
+                        <label for="street_address_1" class="form-label">Street Address 1</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="street_address_2" id="street_address_2" placeholder="Street Address 2" optional>
+                        <label for="street_address_2" class="form-label">Street Address 2</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
+                        <label for="city" class="form-label">City</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="state" id="state" placeholder="State" required>
+                        <label for="state" class="form-label">State</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="zip_code" id="zip_code" placeholder="Zip Code" required>
+                        <label for="zip_code" class="form-label">Zip Code</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+                        <label for="email" class="form-label">Email</label>
+                      </div>
+                    </div>
+                    <!-- <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
+                        <label for="password" class="form-label">Password</label>
+                      </div>
+                    </div> -->
+                    <h3 id="statsmsg"></h3>
+                    <div class="col-12">
+                      <div class="d-grid">
+                        <a><input type="submit" value="Register"></a>
+                       </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="row">
+                  <div class="col-12">
+                    <hr class="mt-5 mb-4 border-secondary-subtle">
+                    <p class="m-0 text-secondary text-center">Already have an account? <a href="#!" class="link-primary text-decoration-none">Sign in</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+
+    <script>
+        //this is the basic format for input. please adjust it for your needs on the different pages.
+       
+
+        document.getElementById('dataInputForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+
+            
+            const formData = new FormData(this); // Get form data
+            const email = formData.get('email'); // Extract text1 input value
+            const first_name = formData.get('first_name'); // Extract text2 input value
+            const last_name = formData.get('last_name'); // Extract text3 input value
+            const phone = formData.get('phone'); // Extract text3 input value
+            const max_dogs = 5;
+            const street1 = formData.get('street_address_1');
+            const street2 = formData.get('street_address_2');
+            const city = formData.get('city');
+            const state = formData.get('state');
+            const zip = formData.get('zip_code');
+            const address_code_id = -1;
+
+            const data = {first_name: first_name, last_name: last_name, phone: phone, email: email, max_dogs: max_dogs, street1: street1, street2: street2, city: city, state: state, zip: zip, address_code_id: address_code_id};// ADJUST THESE VARIBLES FOR INPUT INTO API IT GOES WITH THE CLASS VARIBLES 
+
+            const response = await fetch('/registerContractor', { //assign which endpoint we are trying to reach
+                method: 'POST', //what method we are using 
+                headers: {'Content-Type': 'application/json'}, //what content type we need the infromation to be 
+                body: JSON.stringify(data) //take that infromation and make it into a json for the api 
+             });
+
+             
+             if (response.ok)
+            {
+                document.getElementById("statsmsg").textContent = "Contractor Account Created.";
+                myModal.show();
+            }
+            else
+            {
+                document.getElementById("statsmsg").textContent = "Contractor account under this email already exists.";
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,130 @@
+{# templates/findADogWalker.html #}
+{% extends "base.html" %}
+
+{% block Title %}Find a Dog Walker{% endblock Title %}
+
+{% block Content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm col-xs">
+      <div id="map"></div>
+    </div>
+    <div class="col-sm">
+    <h1>Find a Dog Walker</h1>
+    <div class="formContainer">
+      <h3>Show Walkers available starting between these times:</h3>
+      <form id="findDogWalkerForm">
+        <label for="start_time"><b>Start Time</b></label>
+        <input type="datetime-local" id="start_time" name="start_time" value="{{ start_time_search }}">
+        <label for="end_time"><b>End Time</b></label>
+        <input type="datetime-local" id="end_time" name="end_time" value="{{ end_time_search }}">
+        <input type="submit" value="Submit">
+      </form>
+      <h3>Prices</h3>
+      <table class="table">
+        <tr>
+          <th>Dog Size</th>
+          <th>Cost per Hour</th>
+        </tr>
+      {% for priceEntry in pricing %}
+        <tr>
+          <td>
+            {% if priceEntry.size == 1 %}Small{% endif %}
+            {% if priceEntry.size == 2 %}Medium{% endif %}
+            {% if priceEntry.size == 3 %}Large{% endif %}
+          </td>
+          <td>${{ priceEntry.cost_per_hour }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+    </div>
+    {% for employee_available in employee_availability %}
+      {% if (loop.previtem is defined and loop.previtem.employee_id != employee_available.employee_id) or loop.previtem is not defined %}
+        <div class="eData" 
+          lat-data="{{ employee_available.latitude }}"
+          lng-data="{{ employee_available.longitude }}"
+          employee-name="{{ employee_available.first_name }} {{ employee_available.last_name }}"
+          employee-id="{{ employee_available.employee_id }}"
+        >
+      {% endif %}
+        <div class="avData"
+          av-start="{{ employee_available.availability_start }}"
+          av-end="{{ employee_available.availability_end }}"
+        >
+        </div>
+      {% if (loop.nextitem is defined and loop.nextitem.employee_id != employee_available.employee_id) or loop.nextitem is not defined %}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  
+    
+  </div>
+  </div>
+  <script>
+
+
+    async function initMap() { 
+      const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+      const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+
+      var centering = {lat: 39.099724, lng: -94.578331}; 
+      const map = new Map(document.getElementById('map'), { 
+        zoom: 8, 
+        center: centering,
+        mapId: "4504f8b37365c3d0"
+      }); 
+
+      const availableEmployees = document.getElementsByClassName('eData');
+      const infoWindow = new google.maps.InfoWindow();
+
+      for (var i = 0; i < availableEmployees.length; i++) {
+        const avDatas = availableEmployees.item(i).children;
+        
+        const pin = new PinElement({
+          glyph: `${i + 1}`
+        });
+
+        var myLat = Number(availableEmployees.item(i).getAttribute("lat-data"));
+        var myLng = Number(availableEmployees.item(i).getAttribute("lng-data"));
+        var employeeName = availableEmployees.item(i).getAttribute("employee-name");
+        var employeeID = availableEmployees.item(i).getAttribute("employee-id");
+        var bookLink = "/book-a-walk/" + employeeID
+        
+        const marker = new AdvancedMarkerElement({ 
+          position: {lat: myLat, lng: myLng},
+          title: employeeName,
+          map: map,
+          content: pin.element
+        });
+
+        var buildContentString = 
+          '<h2>' + marker.title + '</h2>' +
+          '<a href=' + bookLink + '>Book a Walk</a>'
+        for (var k = 0; k < avDatas.length; k++) {
+          var avStart = avDatas.item(k).getAttribute("av-Start");
+          var avEnd = avDatas.item(k).getAttribute("av-End");
+          buildContentString = buildContentString +
+          '<p>Available from ' + avStart + ' to ' + avEnd + '</p>'
+        };
+        const contentString = buildContentString;
+
+        // Add a click listener for each marker, and set up the info window.
+        marker.addListener("click", ({ domEvent, latLng }) => {
+          const { target } = domEvent;
+
+          infoWindow.close();
+          infoWindow.setContent(contentString);
+          infoWindow.open(marker.map, marker);
+        });
+      };
+
+    } 
+    initMap();
+  </script> 
+  <script async defer 
+  src= 
+"https://maps.googleapis.com/maps/api/js?key=AIzaSyCoBpG3tVdo54T9c1pe0iKPa8_NP1Sdf6Q&callback=initMap"> 
+  </script>
+{% endblock Content %}

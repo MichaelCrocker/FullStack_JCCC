@@ -1,0 +1,55 @@
+{# templates/deletedog.html #}
+{% extends "base.html" %}
+
+{% block Content %}
+<h3>List of dogs</h3>
+    <ul>
+    {% for dog in dogs %}
+      <li>
+        {{ dog.name }}, {{dog.breed}}
+      </li>
+      {% endfor %}
+    </ul> 
+<form id="dataInputForm">
+    <label for="dogName">Name:</label> 
+        <input type="text" id="dogName" name="dogName">
+    <br><label for="id">ID:</label> 
+        <input type="text" id="ID" name="ID" value="{{customer_id}}">
+    <input id="deleteDog" type="submit" value="Delete Dog">
+</form>
+    <h1 id="statsmsg"> </h1> <!--Where error msgs is displayed-->
+    <h1 id="statsmsg"> </h1>
+    <script>
+        //this is the basic format for input. please adjust it for your needs on the different pages.
+        document.getElementById('dataInputForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(this); // Get form data
+            const dogName = formData.get('dogName'); // Extract text1 input value
+            const breed = "breed" // trash
+            const age = 0 // trash
+            const specialInstruction = "SI"// trash
+            const ID = formData.get('ID'); // Extract text3 input value
+
+            const data = {name: dogName, breed: breed, age: age, special_instructions: specialInstruction, Customer_id: ID};// ADJUST THESE VARIBLES FOR INPUT INTO API IT GOES WITH THE CLASS VARIBLES 
+
+            const response = await fetch('/delete_dog', { //assigne which endpoint we are trying to reach
+                method: 'DELETE', //what method we are using 
+                headers: {'Content-Type': 'application/json'}, //what content type we need the infromation to be 
+                body: JSON.stringify(data) //take that infromation and make it into a json for the api 
+            });
+            //debugger;
+            //Check if response successful this is how we do error msgs for the clinent and display them
+            if (response.ok)
+            {
+                document.getElementById("statsmsg").textContent = "Dog deleted successfully";
+            }
+            else
+            {
+                document.getElementById("statsmsg").textContent = "Couldn't delete dog";
+            }
+        });
+
+        
+    </script>
+{% endblock %}

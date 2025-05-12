@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+sqlalchemy
+mysql-connector-python
+Jinja2
+djlint
+datetime
+python-multipart
+geopy

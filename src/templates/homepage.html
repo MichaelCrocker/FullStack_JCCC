@@ -1,0 +1,31 @@
+{# templates/homepage.html #}
+{% extends "base.html" %}
+
+{% block Content %}
+<div class="container">
+  <div class="row gx-4 gx-lg-5 align-items-center my-5">
+    <div class="col-lg-5 text-xl-start">
+      <p  class=" fs-4"> Welcome! At Paws in Motion Dog Walking, we understand that your pets are cherished members 
+        of your family, and their well-being is of utmost importance. Our company is committed to 
+        providing a premium dog walking experience that goes beyond a simple stroll – we strive to enhance 
+        the overall happiness and health of your furry companions.</p>
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+          <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/contractorLogin">Login</a>
+          <a class="btn btn-outline-dark btn-lg px-4" href="/newCustomerAccount">Register</a>
+      </div>
+  </div>
+    <div class="col-lg-7 "><img class="img-fluid homeImage" src="/static/HowDoesSchedulingWork.png" alt="how to schedule image"></div>    
+  </div>
+  <div class="row align-items-md-stretch bg-dark">
+    <div class="col-md-12">
+      <div class="h-100 p-5 text-white ">
+        <h2>Who we are</h2>
+        <p>Paws in Motion Dog Walking is a dedicated service that offers professional and reliable dog walking solutions 
+            tailored to meet the unique needs of both pets and their owners. We aim to create a community where pets 
+            thrive, and owners enjoy peace of mind knowing their beloved companions are in capable hands.</p>
+      </div>
+    </div>
+   
+  </div>
+
+{% endblock %}

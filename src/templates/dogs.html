@@ -1,0 +1,16 @@
+{# templates/dogs.html #}
+{% extends "base.html" %}
+
+{% block Title %}Dogs{% endblock %}
+
+{% block Content %}
+  <h1>Dogs</h1>
+  <ul>
+    {% for dog in dogs %}
+      <li>
+        {{ dog.name }} {{ dog.breed }}
+      </li>
+    {% endfor %}
+    </ul>
+ 
+{% endblock %}

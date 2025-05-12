@@ -1,0 +1,114 @@
+{# templates/newDog.html #}
+{% extends "base.html" %}
+
+{% block Content %}
+<!-- <form id="dataInputForm">
+    <label for="dogName">Name:</label> 
+        <input type="text" id="dogName" name="dogName">
+    <label for="breed">Breed:</label> 
+        <input type="text" id="breed" name="breed">
+    <label for="age">Age:</label> 
+        <input type="text" id="age" name="age">
+    <label for="specialInstruction">Special Instructions:</label><br> 
+        <textarea id="specialInstruction" name="specialInstruction" cols="50" rows="10"></textarea>
+    <br><label for="id">ID:</label> 
+        <input type="text" id="ID" name="ID">
+    <input id="registerDog" type="submit" value="Register Dog">
+</form> -->
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-9 col-md-12 col-lg-7 col-xl-6 col-xxl-5">
+        <div class="card border-0 shadow-sm rounded-3">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-5">
+                  <h2 class="h3">Add New Dog</h2>
+                  <h3 class="fs-6 fw-normal text-secondary m-0">Enter your details</h3>
+                </div>
+              </div>
+            </div>
+            <form id = "newCustomerForm" >
+              <div class="row gy-3 overflow-hidden">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="dogName" id="dogName" placeholder="Pup Name" required>
+                    <label for="dogName" class="form-label">Pup Name</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="breed" id="breed" placeholder="Breed" required>
+                    <label for="breed" class="form-label">Breed</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="age" id="age" placeholder="Age" required>
+                    <label for="phone" class="form-label">Age</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" rows="10" id="comment"></textarea>
+                    </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="ID" id="ID" required>
+                    <label for="ID" class="form-label">ID</label>
+                  </div>
+                </div>
+                <h3 id="statsmsg"></h3>
+                <div class="col-12">
+                  <div class="d-grid">
+                    <input type="submit" value="Register">
+                   </div>
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-12">
+                <hr class="mt-5 mb-4 border-secondary-subtle">
+                <p class="m-0 text-secondary text-center">Already have an account? <a href="#!" class="link-primary text-decoration-none">Sign in</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+        //this is the basic format for input. please adjust it for your needs on the different pages.
+        document.getElementById('newCustomerForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(this); // Get form data
+            const dogName = formData.get('dogName'); // Extract text1 input value
+            const breed = formData.get('breed'); // Extract text2 input value
+            const age = formData.get('age'); // Extract text3 input value
+            const specialInstruction = "stuff";//formData.get('specialInstruction'); // Extract text3 input value
+            const ID = formData.get('ID'); // Extract text3 input value
+
+            const data = {name: dogName, breed: breed, age: age, special_instructions: specialInstruction, Customer_id: ID};// ADJUST THESE VARIBLES FOR INPUT INTO API IT GOES WITH THE CLASS VARIBLES 
+
+            const response = await fetch('/newDog', { //assigne which endpoint we are trying to reach
+                method: 'POST', //what method we are using 
+                headers: {'Content-Type': 'application/json'}, //what content type we need the infromation to be 
+                body: JSON.stringify(data) //take that infromation and make it into a json for the api 
+            });
+            //debugger;
+            //Check if response successful this is how we do error msgs for the clinent and display them
+            if (response.ok)
+            {
+                document.getElementById("statsmsg").textContent = "Dog entered into account";
+            }
+            else
+            {
+                document.getElementById("statsmsg").textContent = "DOG ALREADY EXSIST";
+            }
+        });
+
+        
+    </script>
+{% endblock %}
